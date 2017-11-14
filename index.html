@@ -26,18 +26,18 @@
 			try{
 				var list = JSON.parse(localStorage.getItem("children"));
 				for (var index = 0; index < list.length; index++){
-					$("#childList").append('<li id="cl' + list[index] + '"><i class="fa-li fa fa-user"></i>'+list[index]+'<button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+					$("#childList").append('<li id="cl' + list[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+list[index]+'<button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
 				}
 
 				var glist = JSON.parse(localStorage.getItem("groups"));
 				for (var index = 0; index < glist.length; index++){
-					$("#groupList").append('<li id="gl' + glist[index] + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
 			}
 			catch(err){
 				var glist = JSON.parse(localStorage.getItem("groups"));
 				for (var index = 0; index < glist.length; index++){
-					$("#groupList").append('<li id="gl' + glist[index] + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
 			}
 		}
@@ -53,6 +53,7 @@
 				    }
 				}
 				localStorage.children = JSON.stringify(newList);
+				id = id.replace(/\s/g, '');
 				$(id).remove();
 			}
 		}
@@ -80,7 +81,7 @@
 		$("#btnchild").click(function(){
 			var x = [document.getElementById("childName").value];
 			if(x != ""){
-				$("#childList").append('<li id="cl' + x + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+				$("#childList").append('<li id="cl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
 				var list = JSON.parse(localStorage.getItem("children"));
 				if (list == null){
 					list = x;
@@ -95,7 +96,7 @@
 		$("#btngroup").click(function(){
 			var x = [document.getElementById("groupName").value];
 			if (x != ""){
-				$("#groupList").append('<li id="gl' + x + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+				$("#groupList").append('<li id="gl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				var list = JSON.parse(localStorage.getItem("groups"));
 				if (list == null){
 					list = x;
