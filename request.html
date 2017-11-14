@@ -67,6 +67,33 @@
 					console.log("redirecting");
 					window.location= "myrequests.html"
 				}
+				else
+				{
+					forWhom = document.getElementById("childselect").value;
+					when = document.getElementById("datepicker").value;
+					where = document.getElementById("location").value;
+					whichgroup = document.getElementById("groupselect").value;
+
+					alertString = "The following fields are incomplete: \n"
+					if(forWhom.length === 0)
+					{
+						alertString = alertString + "For whom: \n";
+					}
+					if(when.length === 0)
+					{
+						alertString = alertString + "When: \n";
+					}
+					if(where.length === 0)
+					{
+						alertString = alertString + "Where: \n";
+					}
+					if(whichgroup.length === 0)
+					{
+						alertString = alertString + "Which group:";
+					}
+					alert(alertString);
+				}
+
 				
 			});
 		});
