@@ -45,6 +45,7 @@
 
 	<script>
 	$(document).ready(function(){
+
 		$("#btnchild").click(function(){
 			var x = [document.getElementById("childName").value];
 			if(x != ""){
@@ -57,6 +58,7 @@
 					list.push(x);
 				}
 				localStorage.children = JSON.stringify(list);
+				document.getElementById("childName").value = "";
 			};
 		});
 		$("#btngroup").click(function(){
@@ -71,8 +73,10 @@
 					list.push(x);
 				}
 				localStorage.groups = JSON.stringify(list);
+				document.getElementById("groupName").value = "";
 			};
 		});
+
 	});
 	</script>
 
@@ -107,7 +111,8 @@
 		<h2>Hanvit Oh</h2>
 		<h5 id="emailheader"><i class="fa fa-envelope-o"></i>hohrocks@example.com</h5>
 
-		<h4>Children</h4>
+
+		<h4>Children <span class = "glyphicon glyphicon-info-sign" data-toggle="popover" title="Add the names of your children that you would like to be babysat here"></span> </h4>
 
 		<ul id="childList" class="fa-ul">
 		</ul>
@@ -117,7 +122,7 @@
 			<input type="text" id="childName" value="">
 		</ul>
 
-		<h4>Groups</h4>
+		<h4>Groups <span class = "glyphicon glyphicon-info-sign" title = "Join a group to send babysitting requests to by entering the name of a group here"></span></h4>
 
 		<ul id="groupList" class="fa-ul">
 		</ul>
