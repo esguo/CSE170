@@ -28,12 +28,12 @@
 							$(id).append('<p>Date: '+ list[index + 1] + '</p>');
 							$(id).append('<p>Location: '+ list[index + 2] + '</p>');
 							$(id).append('<p>Pickup Group: '+ list[index + 3] + '</p>');
-							$(id).append('<button onclick="delRequest(this.parentNode.id)">Delete Request</button>');
+							$(id).append('<button id="' + list[index] + '"" onclick="delRequest(this.parentNode.id,this.id)">Delete Request</button>');
 						}
 				}
 
-				function delRequest(val) {
-					if(confirm('Are you sure you want to delete ' + val + '?')) {
+				function delRequest(val, name) {
+					if(confirm('Are you sure you want to delete the request for ' + name + '?')) {
 						var curr = parseInt(val.substring(3),10);
 						var id = "#" + val;
 						var list = JSON.parse(localStorage.getItem("requests"));
@@ -49,7 +49,7 @@
 							}
 						}
 
-						localStorage.requessts = JSON.stringify(newList);
+						localStorage.requests = JSON.stringify(newList);
 					}
 				}
 			</script>
