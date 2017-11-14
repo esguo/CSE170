@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<title>Request a Babysitter</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+	  	<link rel="stylesheet" href="css/style.css">
+	  	<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script>
+			$( function() {
+				$( "#datepicker" ).datepicker();
+			} );
+		</script>
+
+		<script>
+			window.onload = function(){loadChildren()};
+			function loadChildren(){
+				var list = JSON.parse(localStorage.getItem("children"));
+				for (var index = 0; index < list.length; index++){
+					$("#childselect").append('<option>'+list[index]+'</option>');
+				}
+				list = JSON.parse(localStorage.getItem("groups"));
+				for (var index = 0; index < list.length; index++){
+					$("#groupselect").append('<option>'+list[index]+'</option>');
+				}
+			}
+		</script>
+
+		<script>
+		$(document).ready(function(){
+			$("#btnsubmit").click(function(){
+
+				var list = JSON.parse(localStorage.getItem("requests"));
+
+				var x = [document.getElementById("childselect").value];
+				x.push(document.getElementById("datepicker").value);
+				x.push(document.getElementById("location").value);
+				x.push(document.getElementById("groupselect").value);
+
+				if (list == null){
+					list = x;
+				}
+				else{
+					list = list.concat(x);
+				}
+				localStorage.requests = JSON.stringify(list);
+			});
+		});
+		</script>
+
+	</head>
+	<div class = "container" style="font-family:'MontserratLight';">
+		<body>
+
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="index.html">Baby Bummer</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li><a href="index.html">Home </a></li>
+			        <li class="active"><a href="request.html">Request a Babysitter<span class="sr-only">(current)</span></a></li>
+			        <li><a href="myrequests.html">My Requests</a></li>
+			        <li><a href="login.html">Logout</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+
+			<h2>Request a Babysitter</h2>
+
+			<form>
+				<div class="container">
+				    <div class="row">
+				        <div class='col-sm-6'>
+							<div class="form-group">
+							  	<label for="sel1">For whom:</label>
+							  	<select class="form-control" id="childselect" required>
+							  	</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+				    <div class="row">
+				        <div class='col-sm-6'>
+				            <div class="form-group">
+				            	<label for="sel1"> When: <input type="text" id="datepicker"></label>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+
+				<div class="container">
+				    <div class="row">
+				        <div class='col-sm-6'>
+				            <div class="form-group">
+				            	<label for="sel1">Where:</label>
+				                <input id="location" type='text' required></input>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+
+				<div class="container">
+				    <div class="row">
+				        <div class='col-sm-6'>
+				            <div class="form-group">
+				            	<label for="sel1">Which group:</label>
+				                <select class="form-control" id="groupselect" required>
+							  	</select>
+				            </div>
+				        </div>
+				        </script>
+				    </div>
+				</div>
+
+				<a href="index.html" class="btn btn-default">Cancel Request</a>
+				<button id="btnsubmit" type="submit" class="btn btn-primary">Submit Request</button>
+			</form>
+
+		</body>
+	</div>
+
+
+</html>
