@@ -18,16 +18,40 @@
 	  	<link rel="stylesheet" href="css/font-awesome.css">
 
 			<script>
-			window.onload = function(){loadRequests()};
-			function loadRequests(){
-					var list = JSON.parse(localStorage.getItem("requests"));
-					for (var index = 0; index < list.length; index+=4){
-						$("#myReq").append('<h3>'+ list[index] + '</h3>');
-						$("#myReq").append('<p>Date: '+ list[index + 1] + '</p>');
-						$("#myReq").append('<p>Location: '+ list[index + 2] + '</p>');
-						$("#myReq").append('<p>Pickup Group: '+ list[index + 3] + '</p>');
+				window.onload = function(){loadRequests()};
+				function loadRequests(){
+						var list = JSON.parse(localStorage.getItem("requests"));
+						for (var index = 0; index < list.length; index+=4){
+							id = "#req" + index;
+							$("#myReq").append('<div id="req' + index + '"></div>');
+							$(id).append('<h3>'+ list[index] + '</h3>');
+							$(id).append('<p>Date: '+ list[index + 1] + '</p>');
+							$(id).append('<p>Location: '+ list[index + 2] + '</p>');
+							$(id).append('<p>Pickup Group: '+ list[index + 3] + '</p>');
+							$(id).append('<button onclick="delRequest(this.parentNode.id)">Delete Request</button>');
+						}
+				}
+
+				function delRequest(val) {
+					if(confirm('Are you sure you want to delete ' + val + '?')) {
+						var curr = parseInt(val.substring(3),10);
+						var id = "#" + val;
+						var list = JSON.parse(localStorage.getItem("requests"));
+						var newList = [];
+						for (var index = 0; index < list.length; index+=4){
+							if(curr == index) {
+								$(id).remove();
+							} else {
+								newList.push(list[index]);
+								newList.push(list[index+1]);
+								newList.push(list[index+2]);
+								newList.push(list[index+3]);
+							}
+						}
+
+						localStorage.requessts = JSON.stringify(newList);
 					}
-			}
+				}
 			</script>
 
 	</head>
