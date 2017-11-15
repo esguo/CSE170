@@ -1,6 +1,12 @@
 <html>
 	<head>
 		<title>Request a Babysitter</title>
+		<style>
+		body{
+		  background: url("body-bg.jpg");
+		  background-size: cover;
+		}
+		</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,7 +15,7 @@
 	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
 	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css">
     	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
@@ -45,7 +51,7 @@
 				childselectLength = document.getElementById("childselect").value.length;
 				datepickerLength = document.getElementById("datepicker").value.length;
 				locationLength = document.getElementById("location").value.length;
-				groupselectLength = document.getElementById("groupselect").value.length; 
+				groupselectLength = document.getElementById("groupselect").value.length;
 
 				if(childselectLength > 0 && datepickerLength > 0 && locationLength > 0 && groupselectLength > 0)
 				{
@@ -56,7 +62,7 @@
 					x.push(document.getElementById("location").value);
 					x.push(document.getElementById("groupselect").value);
 
-					
+
 					if (list == null){
 						list = x;
 					}
@@ -94,7 +100,7 @@
 					alert(alertString);
 				}
 
-				
+
 			});
 		});
 		</script>
@@ -176,10 +182,10 @@
 				        </script>
 				    </div>
 				</div>
-			
-				
+
+
 			</form>
-			<a href="index.html" class="btn btn-default">Cancel Request</a> 
+			<a href="index.html" class="btn btn-default">Cancel Request</a>
 			<button id="btnsubmit" type="submit" class="btn btn-primary">Submit Request</button>
 
 		</body>
