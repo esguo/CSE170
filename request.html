@@ -37,8 +37,15 @@
 			window.onload = function(){loadChildren()};
 			function loadChildren(){
 				var list = JSON.parse(localStorage.getItem("children"));
+				var selectedChild = localStorage.getItem("selectedChild");
+				console.log("selectedChild: " + selectedChild);
 				for (var index = 0; index < list.length; index++){
-					$("#childselect").append('<option>'+list[index]+'</option>');
+					console.log("list item: " + list[index]);
+					if (selectedChild == ("cl" + list[index].toString().replace(/\s/g, ''))) {
+						$("#childselect").append('<option selected="selected">'+list[index]+'</option>');
+					} else {
+						$("#childselect").append('<option>'+list[index]+'</option>');
+					}
 				}
 				list = JSON.parse(localStorage.getItem("groups"));
 				for (var index = 0; index < list.length; index++){
