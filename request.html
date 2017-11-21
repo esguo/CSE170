@@ -25,9 +25,11 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link rel="stylesheet" href="/resources/demos/style.css">
 		<script>
-			$( function() {
-				$( "#datepicker" ).datepicker();
-			} );
+			$( function(){
+				$( "#datepicker" ).datetimepicker({
+					minDate:moment()
+				});
+			});
 		</script>
 
 		<script>

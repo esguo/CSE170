@@ -85,6 +85,16 @@
 	<script>
 	$(document).ready(function(){
 
+		$("#childName").keypress(function(e){
+			if(e.keyCode===13)
+			$("#btnchild").click();
+		});
+
+		$("#groupName").keypress(function(e){
+			if(e.keyCode===13)
+			$("#btngroup").click();
+		});
+
 		$("#btnchild").click(function(){
 			var x = [document.getElementById("childName").value];
 			if(x != ""){
