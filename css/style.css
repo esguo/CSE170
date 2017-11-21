@@ -9,6 +9,15 @@ h2,h3,h4,h5,h6 {
 	font-family: 'MontserratLight', sans-serif;
 }
 
+.childlist {
+	font-size: 18px;
+	color: blue;
+}
+
+.fa-li {
+	margin-top: 5px;
+}
+
 #emailheader {
 	margin-top: -10px;
 	margin-bottom: 15px;

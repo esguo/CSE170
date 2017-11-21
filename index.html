@@ -33,7 +33,7 @@
 			try{
 				var list = JSON.parse(localStorage.getItem("children"));
 				for (var index = 0; index < list.length; index++){
-					$("#childList").append('<li id="cl' + list[index].toString().replace(/\s/g, '') + '" value="' + list[index] + '" onclick="request(this.id)"><i class="fa-li fa fa-user"></i>'+list[index]+'<button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+					$("#childList").append('<li id="cl' + list[index].toString().replace(/\s/g, '') + '" value="' + list[index] + '" onclick="request(this.id)"><i class="fa-li fa fa-user"></i><u class="childlist">'+list[index]+'</u><button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
 				}
 
 				var glist = JSON.parse(localStorage.getItem("groups"));
@@ -104,7 +104,7 @@
 		$("#btnchild").click(function(){
 			var x = [document.getElementById("childName").value];
 			if(x != ""){
-				$("#childList").append('<li id="cl' + x.toString().replace(/\s/g, '') + '" value="' + x + '" onclick="request(this.id)"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+				$("#childList").append('<li id="cl' + x.toString().replace(/\s/g, '') + '" value="' + x + '" onclick="request(this.id)"><i class="fa-li fa fa-user"></i><u class="childlist">'+x+'</u><button value="' + x + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
 				var list = JSON.parse(localStorage.getItem("children"));
 				if (list == null){
 					list = x;
