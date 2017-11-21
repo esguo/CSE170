@@ -29,20 +29,36 @@
 
 	<script>
 		window.onload = function(){loadChildren()};
+		localStorage
 		function loadChildren(){
 			try{
 				var list = JSON.parse(localStorage.getItem("children"));
+				if (list == null) {
+					list = [];
+					list.push("Rachel Oh");
+					list.push("Hannah Oh");
+				}
 				for (var index = 0; index < list.length; index++){
 					$("#childList").append('<li id="cl' + list[index].toString().replace(/\s/g, '') + '" value="' + list[index] + '" onclick="request(this.id)"><i class="fa-li fa fa-user"></i><u class="childlist">'+list[index]+'</u><button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
 				}
 
 				var glist = JSON.parse(localStorage.getItem("groups"));
+				if (glist == null) {
+					list = []
+					list.push("UCSD");
+					list.push("Family");
+				}
 				for (var index = 0; index < glist.length; index++){
 					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
 			}
 			catch(err){
 				var glist = JSON.parse(localStorage.getItem("groups"));
+				if (glist == null) {
+					glist = []
+					glist.push("UCSD");
+					glist.push("Family");
+				}
 				for (var index = 0; index < glist.length; index++){
 					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
