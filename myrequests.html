@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>My Requests</title>
+		<style>
+		body{
+			background: url("body-bg.jpg");
+			background-size: cover;
+		}
+		</style>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+	  	<link rel="stylesheet" href="css/style.css">
+	  	<link rel="stylesheet" href="css/font-awesome.css">
+
+			<script>
+				window.onload = function(){loadRequests()};
+				function loadRequests(){
+						var list = JSON.parse(localStorage.getItem("requests"));
+						for (var index = 0; index < list.length; index+=4){
+							id = "#req" + index;
+							$("#myReq").append('<div id="req' + index + '"></div>');
+							$(id).append('<h3>'+ list[index] + '</h3>');
+							$(id).append('<p>Date: '+ list[index + 1] + '</p>');
+							$(id).append('<p>Location: '+ list[index + 2] + '</p>');
+							$(id).append('<p>Pickup Group: '+ list[index + 3] + '</p>');
+							$(id).append('<button id="' + list[index] + '"" onclick="delRequest(this.parentNode.id,this.id)">Delete Request</button>');
+						}
+				}
+
+				function delRequest(val, name) {
+					if(confirm('Are you sure you want to delete the request for ' + name + '?')) {
+						var curr = parseInt(val.substring(3),10);
+						var id = "#" + val;
+						var list = JSON.parse(localStorage.getItem("requests"));
+						var newList = [];
+						for (var index = 0; index < list.length; index+=4){
+							if(curr == index) {
+								$(id).remove();
+							} else {
+								newList.push(list[index]);
+								newList.push(list[index+1]);
+								newList.push(list[index+2]);
+								newList.push(list[index+3]);
+							}
+						}
+
+						localStorage.requests = JSON.stringify(newList);
+					}
+				}
+			</script>
+
+	</head>
+	<div class = "container" style="font-family:'MontserratLight';">
+		<body>
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="index.html">Baby Bummer</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li><a href="index.html">Home </a></li>
+			        <li><a href="request.html">Request a Babysitter</span></a></li>
+			        <li class="active"><a href="myrequests.html">My Requests<span class="sr-only">(current)</a></li>
+			        <li><a href="login.html">Logout</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+			<h2>My Requests</h2>
+			<div id="myReq">
+
+			</div>
+		</body>
+	</div>
+
+
+</html>

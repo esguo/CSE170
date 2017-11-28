@@ -1,0 +1,78 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Welcome</title>
+		<style>
+		body{
+			background: url("body-bg.jpg");
+			background-size: cover;
+		}
+		</style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+	  	<link rel="stylesheet" href="css/style.css">
+	  	<link rel="stylesheet" href="css/font-awesome.css">
+
+	  	<script>
+	  		$(document).ready(function(){
+	  			error = document.getElementById("error");
+	  			error.style.display = "none";
+
+				$("#email").keypress(function(e){
+					if(e.keyCode===13)
+					$("#login").click();
+				});
+
+				$("#password").keypress(function(e){
+					if(e.keyCode===13)
+					$("#login").click();
+				});
+
+				$("#login").click(function(){
+					email = document.getElementById("email").value;
+					password = document.getElementById("password").value;
+					console.log("email: "  + email);
+					console.log("password: " + password);
+					if(email === "hohrocks@example.com"  && password === "password1234")
+					{
+						error.style.display = "none";
+						window.location.href = "index.html";
+					}
+					else
+					{
+						error.style.display = "block";
+					}
+			});
+		});
+	  	</script>
+	</head>
+	<div class = "container" style="font-family:'MontserratLight';">
+		<body>
+			<h1>Baby Bummer</h1>
+
+			<h3>Email</h3>
+			<input type = "text" id = "email" required></input>
+			<br>
+			<h3>Password</h3>
+			<input type = "password" id = "password" required></input>
+			<br>
+			<br>
+			<button class="btn btn-default" id = "login">Login</button>
+			<br>
+			<br>
+			<div id = "error">
+			<h5 >Incorrect email/password</h5>
+			</div>
+		</body>
+	</div>
+</html>

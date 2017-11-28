@@ -1,0 +1,177 @@
+<!-- Jeremy checking in -->
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Babysitter</title>
+
+	<style>
+	body{
+	  background: url("body-bg.jpg");
+	  background-size: cover;
+	}
+	</style>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+
+	<script>
+		window.onload = function(){loadChildren()};
+		function loadChildren(){
+			try{
+				var list = JSON.parse(localStorage.getItem("children"));
+				for (var index = 0; index < list.length; index++){
+					$("#childList").append('<li id="cl' + list[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+list[index]+'<button value="' + list[index] + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+				}
+
+				var glist = JSON.parse(localStorage.getItem("groups"));
+				for (var index = 0; index < glist.length; index++){
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+				}
+			}
+			catch(err){
+				var glist = JSON.parse(localStorage.getItem("groups"));
+				for (var index = 0; index < glist.length; index++){
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+				}
+			}
+		}
+		function delChild(val) {
+			if(confirm('Are you sure you want to delete ' + val + '?')) {
+				var list = JSON.parse(localStorage.getItem("children"));
+				var newList = [];
+				for (var i = 0; i < list.length; i++) {
+				    if (list[i] == val) {
+				    	var id = "#cl" + val;
+				    } else {
+				    	newList.push(list[i]);
+				    }
+				}
+				localStorage.children = JSON.stringify(newList);
+				id = id.replace(/\s/g, '');
+				$(id).remove();
+			}
+		}
+
+		function delGroup(val) {
+			if(confirm('Are you sure you want to delete ' + val + '?')) {
+				var list = JSON.parse(localStorage.getItem("groups"));
+				var newList = [];
+				for (var i = 0; i < list.length; i++) {
+				    if (list[i] == val) {
+				    	var id = "#gl" + val;
+				    } else {
+				    	newList.push(list[i]);
+				    }
+				}
+				localStorage.groups = JSON.stringify(newList);
+				$(id).remove();
+			}
+		}
+	</script>
+
+	<script>
+	$(document).ready(function(){
+
+		$("#btnchild").click(function(){
+			var x = [document.getElementById("childName").value];
+			if(x != ""){
+				$("#childList").append('<li id="cl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delChild(this.value)" class="delBtn">Delete</button></li>');
+				var list = JSON.parse(localStorage.getItem("children"));
+				if (list == null){
+					list = x;
+				}
+				else{
+					list.push(x);
+				}
+				localStorage.children = JSON.stringify(list);
+				document.getElementById("childName").value = "";
+			};
+		});
+		$("#btngroup").click(function(){
+			var x = [document.getElementById("groupName").value];
+			if (x != ""){
+				$("#groupList").append('<li id="gl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+				var list = JSON.parse(localStorage.getItem("groups"));
+				if (list == null){
+					list = x;
+				}
+				else{
+					list.push(x);
+				}
+				localStorage.groups = JSON.stringify(list);
+				document.getElementById("groupName").value = "";
+			};
+		});
+
+	});
+	</script>
+
+</head>
+<div class = "container" style="font-family:'MontserratLight';">
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Baby Bummer</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+						<li><a href="request.html">Request a Babysitter</a></li>
+						<li><a href="myrequests.html">My Requests</a></li>
+						<li><a href="login.html">Logout</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<h2>Hanvit Oh</h2>
+		<h5 id="emailheader"><i class="fa fa-envelope-o"></i>hohrocks@example.com</h5>
+
+
+		<h4>Children <span class = "glyphicon glyphicon-info-sign" data-toggle="popover" title="Add the names of your children that you would like to be babysat here"></span> </h4>
+
+		<ul id="childList" class="fa-ul">
+		</ul>
+
+		<ul id="endList" class="fa-ul">
+			<li><i class="fa-li fa fa-plus" id="addgroup"></i></li><button id="btnchild">Add Child:</button>
+			<input type="text" id="childName" value="">
+		</ul>
+
+		<h4>Groups <span class = "glyphicon glyphicon-info-sign" title = "Join a group to send babysitting requests to by entering the name of a group here"></span></h4>
+
+		<ul id="groupList" class="fa-ul">
+		</ul>
+		<ul id="endList" class="fa-ul">
+			<li><i class="fa-li fa fa-plus" id="addgroup"></i></li><button id="btngroup">Add Group:</button>
+			<input type="text" id="groupName" value="">
+		</ul>
+
+	</body>
+</div>
+
+
+</html>
