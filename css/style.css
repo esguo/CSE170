@@ -21,6 +21,10 @@ a {
 	font-family: 'MontserratLight', sans-serif;
 }
 
+ul {
+	font-family: 'MontserratLight', sans-serif;
+}
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -42,9 +46,13 @@ a {
 	font-family: 'MontserratLight', sans-serif;
 }
 
-.childlist {
+.childList {
 	font-size: 18px;
 	color: blue;
+}
+
+.groupList {
+	font-size: 18px;
 }
 
 .fa-li {

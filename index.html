@@ -107,7 +107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					localStorage.groups = JSON.stringify(list);
 				}
 				for (var index = 0; index < glist.length; index++){
-					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i><span class="grouplist">'+glist[index]+'</span><button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
 			}
 			catch(err){
@@ -119,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					localStorage.groups = JSON.stringify(list);
 				}
 				for (var index = 0; index < glist.length; index++){
-					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+glist[index]+'<button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+					$("#groupList").append('<li id="gl' + glist[index].toString().replace(/\s/g, '') + '" class="grouplist"><i class="fa-li fa fa-user"></i><span class="grouplist">'+glist[index]+'</span><button value="' + glist[index] + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				}
 			}
 		}
@@ -194,7 +194,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		$("#btngroup").click(function(){
 			var x = [document.getElementById("groupName").value];
 			if (x != ""){
-				$("#groupList").append('<li id="gl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i>'+x+'<button value="' + x + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
+				$("#groupList").append('<li id="gl' + x.toString().replace(/\s/g, '') + '"><i class="fa-li fa fa-user"></i><span class="grouplist">'+x+'</span><button value="' + x + '" onclick="delGroup(this.value)" class="delBtn">Delete</button></li>');
 				var list = JSON.parse(localStorage.getItem("groups"));
 				if (list == null){
 					list = x;
