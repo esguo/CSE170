@@ -46,13 +46,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				function loadRequests(){
 						var list = JSON.parse(localStorage.getItem("requests"));
 						for (var index = 0; index < list.length; index+=4){
-							id = "#req" + index;
-							$("#myReq").append('<div id="req' + index + '"></div>');
+							id = "#reqCard" + index;
+							$("#myReq").append('<div id="reqCard' + index + '" class="card"></div>');
+							$(id).append('<div id="reqContainer' + index + '" class="container"></div>');
+							id = "#reqContainer" + index;
 							$(id).append('<h3>'+ list[index] + '</h3>');
 							$(id).append('<p>Date: '+ list[index + 1] + '</p>');
 							$(id).append('<p>Location: '+ list[index + 2] + '</p>');
 							$(id).append('<p>Pickup Group: '+ list[index + 3] + '</p>');
 							$(id).append('<button id="' + list[index] + '"" onclick="delRequest(this.parentNode.id,this.id)">Delete Request</button>');
+							$("#myReq").append(document.createElement("br"));
 						}
 				}
 
