@@ -9,6 +9,18 @@ h2,h3,h4,h5,h6 {
 	font-family: 'MontserratLight', sans-serif;
 }
 
+nav {
+	font-family: 'MontserratLight', sans-serif;
+}
+
+button {
+	font-family: 'MontserratLight', sans-serif;
+}
+
+a {
+	font-family: 'MontserratLight', sans-serif;
+}
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -27,6 +39,7 @@ h2,h3,h4,h5,h6 {
 	padding-right: 16px;
 	padding-top: 0px;
 	padding-bottom: 10px;
+	font-family: 'MontserratLight', sans-serif;
 }
 
 .childlist {
